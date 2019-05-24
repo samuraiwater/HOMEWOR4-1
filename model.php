@@ -43,15 +43,6 @@ function getFilmData($fdatas){
 	}
 	return $result;
 } 
- //SQL文を実行する
- $fdatas = $Mysqli->query($sql);
- //扱いやすい形に変える
- $result = [];
- while($row = $fdatas->fetch_assoc()){
-	 $result[] = $row;
- }
- return $result;
-}
 ?>
 
     
