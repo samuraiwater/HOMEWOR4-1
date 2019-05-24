@@ -13,15 +13,14 @@ function getFilmData($fdatas){
 	if(!empty($fdatas['title'])){
 		$where[] = "title like '%{$fdatas['title']}%'";
 	}
-
-    
-	 //if($where){
+	if($where){
 		// $whereSql = implode(' AND ', $where);
-		 $sql="SELECT film.title,category.name FROM film JOIN film_category ON film.film_id = film_category.film_id JOIN category ON film.film_id = category.category_id";
-	// 	$sql = 'select * from film where ' . $whereSql ;
-	// }else{
-	// 	$sql = 'select * from film';
-	//}
+			$sql="SELECT film.title,category.name 
+			FROM film 
+			JOIN film_category ON film.film_id = film_category.film_id 
+			JOIN category ON film_category.category_id = category.category_id 
+			ORDER BY film.film_id ";
+	}
 	
 	//SQL文を実行する
 	$fdatas = $Mysqli->query($sql);
@@ -31,7 +30,6 @@ function getFilmData($fdatas){
 		$result[] = $row;
 	}
     return $result;
-    // echo $row;
 }
   
    //あらかじめ配列を生成しておき、while文で回します。
@@ -39,7 +37,7 @@ function getFilmData($fdatas){
    while($row = $fdatas->fetch(PDO::FETCH_ASSOC)){
 	$fdatas[]=array(
 	 'title' =>$row['title'],
-	 'category'=>$row['category']
+	//  'category'=>$row['category']
 	);
    }  
 ?>
