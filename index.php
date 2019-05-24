@@ -6,15 +6,14 @@ $filmData = getFilmData($_GET);
 
 <!DOCTYPE html>
   <html lang="ja">
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	  <title>PHP Search Function</title>
-    </head>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>PHPの検索機能</title>
+		<link rel="stylesheet" href="style.css">
+		<!-- Bootstrap読み込み（スタイリングのため） -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	</head>
     <body>
 		<!-- <h1 class="col-xs-6 col-xs-offset-3">Film Serch form</h1> -->
 		<h1>検索画面</h1>
@@ -32,32 +31,6 @@ $filmData = getFilmData($_GET);
 		</div>
         <!-- <div class="col-xs-6 col-xs-offset-3"> -->
 		<?php //③取得データを表示する　?>
-		<?php if(isset($filmData) && count($filmData)): ?>
-		<p class="alert alert-success"><?php echo count($filmData) ?>件見つかりました。</p>		
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Film title</th>
-					<th>Category</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach($filmData as $row): ?>
-					<tr>
-						<td><?php echo htmlspecialchars($row['title']) ?></td>
-					</tr>
-				<?php endforeach; ?>
-				<?php foreach($category as $row): ?>
-					<tr>
-						<td><?php echo htmlspecialchars($row['category']) ?></td>
-					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<?php else: ?>
-			<p class="alert alert-danger">検索対象は見つかりませんでした。</p>
-		<?php endif; ?>
-	  <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+		<?php $result .= "<td><a href='result.php?id=" . $row[0] . "'>" . htmlspecialchars( $row[1], ENT_QUOTES) . "</a></td>\n";?>
     </body>
   </html>
