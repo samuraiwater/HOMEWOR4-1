@@ -15,8 +15,8 @@ function getFilmData($fdatas){
 	if(!empty($fdatas['title'])){
 		$where[] = "title like '%{$fdatas['title']}%'";
 	}
-	if(!empty($params['name'])){
-		$where[] = 'name = ' . $params['name'];
+	if(!empty($fdatas['name'])){
+		$where[] = 'name = ' . $fdatas['name'];
 	}
 	if($where){
 		 $whereSql = implode(' AND ', $where);
@@ -27,23 +27,13 @@ function getFilmData($fdatas){
 			ORDER BY film.film_id ";
 	}
 	
-	if($where){
-		$whereSql = implode(' AND ', $where);
-		$sql = 'select * from film where ' . $whereSql ;
-	// }else{
-	// 	$sql = 'select * from film';
-	// }
-
-	//SQL文を実行する
-	$filmDataSet = $Mysqli->query($sql);
-	//扱いやすい形に変える
-	$result = [];
-	while($row = $filmDataSet->fetch_assoc()){
-		$result[] = $row;
-	}
-	return $result;
-} 
+    //SQL文を実行する
+    $filmDataSet = $Mysqli->query($sql);
+    //扱いやすい形に変える
+    $result = [];
+    while($row = $filmDataSet->fetch_assoc()){
+        $result[] = $row;
+    }
+    return $result;
+}
 ?>
-
-    
-   
