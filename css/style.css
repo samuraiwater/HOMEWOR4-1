@@ -1,0 +1,15 @@
+body {
+    margin: 0 auot;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    width: 860px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: paleturquoise;
+}
