@@ -1,15 +1,92 @@
 body {
-    margin: 0 auot;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 860px;
+    margin: 0 auto;
+}
+
+@font-face{
+    font-family: "FSTMedley";
+    font-weight: normal;
+    src:url("https://www.font-stream.com/fontdata/FstMedleyFont.woff2?token=FstMedleyFont") format("woff2"),
+    url("https://www.font-stream.com/fontdata/FstMedleyFont.woff?token=FstMedleyFont") format("woff"),
+    url("https://www.font-stream.com/fontdata/FstMedleyFont.eot?token=FstMedleyFont") format("embedded-opentype");
+  }
+
+.container {
+    width: 100%;
+    margin-top: 20px;
+}
+.search_title {
+    width: 100%;
+    height: 100px;
+    background-color: #3f5b77;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
 }
 
 h1 {
+    padding: 20px 0 15px 0;
     text-align: center;
+    margin: 0 auto;
+    font-family: "FSTMedley";
+    font-weight: normal;
 }
 
-.form-group {
-    width: 860px;
-    height: 400px;
+h5 {
+    text-align: center;
+    padding: 0;
     margin: 0 auto;
-    background-color: paleturquoise;
+    font-family: "FSTMedley";
+    font-weight: normal;
+}
+.form-group {
+    width: 500px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+input{
+    width: 400px;
+    height: 37px;
+    font-size: 18px;
+    border-bottom:solid gray 1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    float: left;
+}
+
+input[type="text"]:focus {
+    outline: 0;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    box-shadow: 0px 4px 0px 0px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,0.6);
+    background-color: rgb(122, 156, 201);
+    float: left;
+    margin: 0 0 0 150px;
+    padding: 0;
+    border-radius: 3px;
+    font-family: "FSTMedley";
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(141, 178, 226);
+}
+
+.clear-element {
+    margin-bottom: 30px;
+    clear: both;
+}
+
+.alert alert-success {
+    display: block;
+    margin-top: 30px;
+    float: left;
 }
