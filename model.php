@@ -8,25 +8,31 @@ function getFilmData($fdatas){
 		error_log($Mysqli->connect_error);
 		exit;
 	}
+
 	//入力された検索条件からSQl文を生成
+	
 	$where = [];
-	if(!empty($fdatas['film.title'])){
+	if(!empty($fdatas['title'])){
 		$where[] = "title like '%{$fdatas['title']}%'";
 	}
-	if(!empty($fdatas['category.name'])){
+	if(!empty($fdatas['name'])){
 		$where[] = 'name = ' . $fdatas['name'];
 	}
 	if($where){
 		$whereSql = implode(' AND ', $where);
-			$sql="SELECT film.title,category.name 
+		    $sql = 'SELECT film.title,category.name
 			FROM film 
 			JOIN film_category ON film.film_id = film_category.film_id 
 			JOIN category ON film_category.category_id = category.category_id 
-			ORDER BY film.film_id ";
+			WHERE film.title = .$whereSql
+			ORDER BY film.film_id';
 	}else{
 		$sql = 'select * from film';
+
 	}
-	//SQL文を実行する
+
+		
+    //SQL文を実行する
     $filmDataSet = $Mysqli->query($sql);
     //扱いやすい形に変える
     $result = [];

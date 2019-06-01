@@ -25,8 +25,8 @@ $filmData = getFilmData($_GET);
 						<input name="title" type="text" class="form-control" id="FilmTitle" value="<?php echo isset($_GET['title']) ? htmlspecialchars($_GET['title']) : '' ?>" placeholder="検索キーワード" >
 					</div>	
 					<div class="form-group">
-						<label for="InputName"></label>
-						<input name="name" type="text" class="form-control" id="CategoryName" value="<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : '' ?>">
+						<!-- <label for="InputName"></label> -->
+						<!-- <input name="name" type="text" class="form-control" id="CategoryName" value="<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : '' ?>"> -->
 					</div>	
 					<button type="submit" class="btn btn-default" name="search">Search</button>
 					<div class="clear-element"></div><!-- 空要素 -->
