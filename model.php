@@ -18,18 +18,20 @@ function getFilmData($fdatas){
 	if(!empty($fdatas['name'])){
 		$where[] = 'name = ' . $fdatas['name'];
 	}
-	if($where){
+	if(isset($where)){
 		$whereSql = implode(' AND ', $where);
-		    $sql = 'SELECT film.title,category.name
+		    $sql = "SELECT film.title,category.name
 			FROM film 
 			JOIN film_category ON film.film_id = film_category.film_id 
 			JOIN category ON film_category.category_id = category.category_id 
-			WHERE film.title = .$whereSql
-			ORDER BY film.film_id';
+			`where` .  $whereSql
+			ORDER BY film.film_id";
 	}else{
-		$sql = 'select * from film';
+		$sql = 'select * from film, category.name';
 
 	}
+	echo 'sql = ' . $sql . '<br>';
+    echo 'whereSql = ' . $whereSql . '<br>';
 
 		
     //SQL文を実行する
@@ -42,3 +44,4 @@ function getFilmData($fdatas){
     return $result;
 }
 ?>
+
