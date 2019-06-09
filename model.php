@@ -8,46 +8,30 @@ function getFilmData($fdatas){
 		error_log($Mysqli->connect_error);
 		exit;
 	}
+	
 	//入力された検索条件からSQl文を生成	
-	$where = [];
-	if(!empty($fdatas['title'])){
-		$where[] = "title like '%{$fdatas['title']}%'";
+	if (isset($_GET['title'])) {
+		$title = htmlspecialchars($_GET['title']);
+		$title_value = $title;
+	  }else {
+		$title = '';
+		$title_value = '';
 	}
-	if(!empty($fdatas['name'])){
-		$where[] = 'name = ' . $fdatas['name'];
-	}
-	if(isset($where)){
-		$whereSql = implode(' AND ', $where);
-		$sql = 'SELECT film.title,category.name
-        FROM film
-        JOIN film_category ON film.film_id = film_category.film_id
-        JOIN category ON film_category.category_id = category.category_id';
-        if (!empty($whereSql)) {
-			$sql .= ' WHERE film.title = '. $whereSql;		
-		}
-		$sql .= ' ORDER BY film.film_id';
-	}else{
-		$sql = 'select * from film, category.name';
-	}
-
-	echo 'where =' . $where . '<br />';
-	echo '<br>';
-	echo 'fdatas =' . $fdatas . '<br />';
-	echo '<br>';
-	echo 'sql = ' . $sql . '<br>';
-	echo '<br>';
-    echo 'whereSql = ' . $whereSql . '<br>';
+	$sql = "SELECT film.title,category.name 
+	FROM film 
+	JOIN film_category ON film.film_id = film_category.film_id 
+	JOIN category ON film_category.category_id = category.category_id
+	WHERE film.title LIKE '%$title%'
+	ORDER BY film.film_id";  
 
     //SQL文を実行する
 	$filmDataSet = $Mysqli->query($sql);
+
 	//扱いやすい形に変える
     $result = [];
     while($row = $filmDataSet->fetch_assoc()){
         $result[] = $row;
 	}
-    return $result;
+	return $result;
 }
-
-echo 'row='. $row . '<br />';
 ?>
-
