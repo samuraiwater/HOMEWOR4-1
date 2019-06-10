@@ -1,17 +1,23 @@
 <?php 
 //①データ取得ロジックを呼び出す
-include_once('index.php');
+//function getFilmData($filmData);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
     <title>検索結果</title>
+    <link rel="stylesheet" href="../filmsearch/css/style.css">
 </head>
 <body>
+    <div class="container">
+        <div class="search_title">
+	        <h1>- 検索画面 -</h1>
+	        <h5>sakila database search app</h5>
+        </div>
+	</div>			
     <?php //③取得データを表示する　?>
     <?php if(isset($filmData) && count($filmData)): ?>
     <p class="alert alert-success"><?php echo count($filmData) ?>件見つかりました。</p>		
@@ -34,5 +40,6 @@ include_once('index.php');
     <?php else: ?>
     <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
     <?php endif; ?>	
+}
 </body>
 </html>

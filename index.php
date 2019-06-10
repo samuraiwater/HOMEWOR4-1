@@ -19,10 +19,10 @@ $filmData = getFilmData($_GET);
 				<h5>sakila database search app</h5>
 			</div>			
 		<?php //②検索フォーム ?>
-			<form method="get">
+			<form action="result.php?" method="get" >
 				<div class="form-group">
 					<label for="InputTitle"></label>
-					<input name="title" type="text" class="form-control" id="FilmTitle" onclick="location.href='../result.php'" value="<?php echo isset($_GET['title']) ? htmlspecialchars($_GET['title']) : '' ?>" placeholder="検索キーワード" >
+					<input name="title" type="text" class="form-control" id="FilmTitle" value="<?php echo isset($_GET['title']) ? htmlspecialchars($_GET['title']) : '' ?>" placeholder="検索キーワード" >
 					<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : '' ?>
 				</div>	
 				<button type="submit" class="btn btn-default" name="search">Search</button>
