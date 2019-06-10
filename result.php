@@ -1,6 +1,7 @@
 <?php 
 //①データ取得ロジックを呼び出す
-//function getFilmData($filmData);
+include_once('model.php');
+$filmData = getFilmData($_GET);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 	        <h1>- 検索画面 -</h1>
 	        <h5>sakila database search app</h5>
         </div>
-	</div>			
+	</div>		
     <?php //③取得データを表示する　?>
     <?php if(isset($filmData) && count($filmData)): ?>
     <p class="alert alert-success"><?php echo count($filmData) ?>件見つかりました。</p>		
@@ -40,6 +41,8 @@
     <?php else: ?>
     <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
     <?php endif; ?>	
-}
+    <form action="index.php" method="get" >
+        <button type="submit" class="btn btn-default" name="search">戻る</button>
+    </form>
 </body>
 </html>

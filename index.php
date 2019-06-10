@@ -1,9 +1,3 @@
-<?php 
-//①データ取得ロジックを呼び出す
-include_once('model.php');
-$filmData = getFilmData($_GET);
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
@@ -19,13 +13,13 @@ $filmData = getFilmData($_GET);
 				<h5>sakila database search app</h5>
 			</div>			
 		<?php //②検索フォーム ?>
-			<form action="result.php?" method="get" >
+			<form action="result.php" method="get" >
 				<div class="form-group">
 					<label for="InputTitle"></label>
 					<input name="title" type="text" class="form-control" id="FilmTitle" value="<?php echo isset($_GET['title']) ? htmlspecialchars($_GET['title']) : '' ?>" placeholder="検索キーワード" >
 					<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : '' ?>
 				</div>	
-				<button type="submit" class="btn btn-default" name="search">Search</button>
+				<button type="submit" class="btn btn-default" name="search">検索</button>
 				<div class="clear-element"></div><!-- 空要素 -->
 			</form>
 		</div>
