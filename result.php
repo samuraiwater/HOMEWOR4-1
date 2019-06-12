@@ -14,11 +14,14 @@ $filmData = getFilmData($_GET);
 </head>
 <body>
     <div class="container">
-        <div class="search_title">
-	        <h1>- 検索画面 -</h1>
+        <div class="page_title">
+	        <h1>- 検索結果画面 -</h1>
 	        <h5>sakila database search app</h5>
         </div>
 	</div>		
+    <form action="index.php" method="get" >
+        <button type="submit" class="bt_back" name="search">戻る</button>
+    </form>
     <?php //③取得データを表示する　?>
     <?php if(isset($filmData) && count($filmData)): ?>
     <p class="alert alert-success"><?php echo count($filmData) ?>件見つかりました。</p>		
@@ -41,8 +44,5 @@ $filmData = getFilmData($_GET);
     <?php else: ?>
     <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
     <?php endif; ?>	
-    <form action="index.php" method="get" >
-        <button type="submit" class="btn btn-default" name="search">戻る</button>
-    </form>
 </body>
 </html>
