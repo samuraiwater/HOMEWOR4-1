@@ -42,7 +42,7 @@ if ($Mysqli->connect_error) {
                     ?>
                 </select>                           
             </form>
-            <form method="post" action="index.php">
+            <form method="post" action="insert.php">
                 <input type="submit" class="bt_register" name="add" value="登録">
             </form>
             <form method="post" action="index.php">

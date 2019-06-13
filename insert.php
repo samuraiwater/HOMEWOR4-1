@@ -20,8 +20,10 @@ if (!$con) {
 ?>
 <p>登録が完了しました。<br /><a href="index.html">戻る</a></p>
 
-
-
+<?php
+ 　header('Location: https://index.php/');
+　 exit;
+?>
 
 
 // $title = $_POST['title'];
