@@ -23,7 +23,7 @@ if ($Mysqli->connect_error) {
 	        <h5>sakila database search app</h5>
         </div>
         <div class="input_area">
-            <form method="post" action='test.php'>
+            <form method="post" action='insert.php'>
                 <div class="movie_title" >Title<input class="title_input" type="text" name="title"></div>
                 <div class="category_name">Category</div>
                 <?php 
@@ -34,15 +34,16 @@ if ($Mysqli->connect_error) {
                 ?>
                 <select name = "category" class = "pulldown">
                     <?php 
+                        
                         while($rows = $resultSet -> fetch_assoc()){
-                            $color === $color1 ? $color = $color2 : $color = $color1;
+                            $color == $color1 ? $color = $color2 : $color = $color1;
+                            $category_id = $rows['category_id'];
                             $name = $rows['name'];
-                            echo "<option value='$name'>$name</option>";
+                            echo "<option value='$category_id'>$name</option>";
                         }
                     ?>
                 </select>                           
-            </form>
-            <form method="post" action="insert.php">
+                    
                 <input type="submit" class="bt_register" name="add" value="登録">
             </form>
             <form method="post" action="index.php">
