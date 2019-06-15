@@ -37,10 +37,11 @@ $filmData = getFilmData($_GET);
             <tr>
                 <td><?php echo htmlspecialchars($row['title']) ?></td>
                 <td><?php echo htmlspecialchars($row['name']) ?></td>
+                <td><p class="edit">編集</p></td>
             </tr>
             <?php endforeach; ?>
         </tbody>	
-    </table>		
+    </table>
     <?php else: ?>
     <p class="alert alert-danger">検索対象は見つかりませんでした。</p>
     <?php endif; ?>	

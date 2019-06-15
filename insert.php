@@ -15,12 +15,12 @@ if ($Mysqli->connect_error) {
 //     }
 
 $title = $_POST['title'];
-$category = $_POST['name'];
+$category = $_POST['category'];
 
 echo '$title= '.$title .'<br />';
 echo '$category= '.$category .'<br />';
 
-$result = mysqli_query("INSERT INTO film(title), category(name) VALUES('$title', '$name')", $con);
+$result = mysqli_query("INSERT INTO film(title), category(name) VALUES('$title', '$name')", $Mysqli);
 
 if (!$sql) {
     exit('データを登録できませんでした。');
