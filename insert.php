@@ -4,31 +4,39 @@ $Mysqli = new mysqli($host, $username, $password, $dbname);
 if ($Mysqli->connect_error) {
     error_log($Mysqli->connect_error);
     exit;
-}	
+}
 
-$title   = $_REQUEST['titel'];
-$category = $_REQUEST['name'];
+//PDO 
+// try {
+//     $pdo = new PDO('mysql:host=$host;dbname=$dbname;charset=utf8','$username','$password',
+//     array(PDO::ATTR_EMULATE_PREPARES => false));
+//     } catch (PDOException $e) {
+//      exit('データベース接続失敗。'.$e->getMessage());
+//     }
 
-$result = mysql_query("INSERT INTO film(title, name) VALUES('$title', '$name')", $con);
-if (!$result) {
-   exit('データを登録できませんでした。');
+$title = $_POST['title'];
+$category = $_POST['name'];
+
+echo '$title= '.$title .'<br />';
+echo '$category= '.$category .'<br />';
+
+$result = mysqli_query("INSERT INTO film(title), category(name) VALUES('$title', '$name')", $con);
+
+if (!$sql) {
+    exit('データを登録できませんでした。');
     }
 $con = mysql_close($con);
-if (!$con) {
-   exit('データベースとの接続を閉じられませんでした。');
+    if (!$con) {
+    exit('データベースとの接続を閉じられませんでした。');
     }
 ?>
-<p>登録が完了しました。<br /><a href="index.html">戻る</a></p>
-
 <?php
- 　header('Location: https://index.php/');
-　 exit;
+    header('Location: index.php');
+    exit;
 ?>
 
-
-// $title = $_POST['title'];
+<!-- // $title = $_POST['title'];
 // $category = $_POST['category'];
-
 // $sql = "INSERT INTO contents (title, category) VALUES (:title, :category)"; // INSERT文を変数に格納。:nameや:categoryはプレースホルダという、値を入れるための単なる空箱
 // $stmt = $Mysqli->prepare($sql); //挿入する値は空のまま、SQL実行の準備をする
 // $params = array(':title' => $title, ':category' => $category); // 挿入する値を配列に格納する
@@ -37,4 +45,4 @@ if (!$con) {
 // echo "<p>title: ".$title."</p>";
 // echo "<p>category: ".$category."</p>";
 // echo '<p>で登録しました。</p>'; // 登録完了のメッセージ
-?>
+//?> -->
