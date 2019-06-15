@@ -34,7 +34,6 @@ if ($Mysqli->connect_error) {
                 ?>
                 <select name = "category" class = "pulldown">
                     <?php 
-                        
                         while($rows = $resultSet -> fetch_assoc()){
                             $color == $color1 ? $color = $color2 : $color = $color1;
                             $category_id = $rows['category_id'];
@@ -42,8 +41,7 @@ if ($Mysqli->connect_error) {
                             echo "<option value='$category_id'>$name</option>";
                         }
                     ?>
-                </select>                           
-                    
+                </select>                                
                 <input type="submit" class="bt_register" name="add" value="登録">
             </form>
             <form method="post" action="index.php">
@@ -53,6 +51,8 @@ if ($Mysqli->connect_error) {
 	</div>		    
 </body>
 </html>
+
+//<a>
 
 
 
